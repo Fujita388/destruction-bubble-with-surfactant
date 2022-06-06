@@ -12,4 +12,4 @@
 source /home/issp/materiapps/intel/lammps/lammpsvars.sh
 
 python3 generate.py
-srun lammps < coexist.input
+srun lammps < make_bubble.input
