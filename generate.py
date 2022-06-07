@@ -1,5 +1,5 @@
 ###########################################################
-# atom 1: solution, atom 2: hydrophobic group, atom 3: wall
+# atom 1: solvent, atom 2: hydrophobic group, atom 3: wall
 # mol_id determines the bonding between atoms
 # prepare atom 2 on the suface of bubble
 ###########################################################

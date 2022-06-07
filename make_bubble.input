@@ -5,7 +5,7 @@ timestep 0.001
 
 read_data make_bubble.atoms
 
-# solution
+# solvent
 mass 1 1.0
 # hydrophobic group
 mass 2 1.0
