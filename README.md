@@ -11,7 +11,7 @@
 
 ## Prevention of parallel shift caused by gravity
 
- Create a wall that does not move with the atoms named number 3
+ Create a wall that does not move with atom 3
 
 
 ## Concentration of surfactant
