@@ -58,7 +58,7 @@ def add_ball(atoms, l, rho):
     m = int(get_lattice_number(l, rho))  # lattice number in liquid-phase
     s = 1.7  # Length of a unit lattice edge
     h = 0.5 * s
-    mol_id = 0
+    mol_id = 1  # molcule ID
     N = 0  # Number of bond
     index = 1  # atom ID that make up the bond
     for ix in range(0, m):
@@ -67,9 +67,9 @@ def add_ball(atoms, l, rho):
                 x = ix * s
                 y = iy * s
                 z = iz * s
-                if (x-l/2)**2 + (y-l/2)**2 + (z-l/2)**2 < 10**2:  # Hollow out of the liquid phase
+                if (x-l/2)**2 + (y-l/2)**2 + (z-l/2)**2 < 8**2:  # Hollow out of the liquid phase
                     continue
-                if (x-l/2)**2 + (y-l/2)**2 + (z-l/2)**2 < 12**2:  # Let atom type at a certain distance be 2
+                elif (x-l/2)**2 + (y-l/2)**2 + (z-l/2)**2 < 12**2:  # Let atom type at a certain distance be 2
                     atoms.append(Atom(x, y, z, 2, mol_id))
                     atoms.append(Atom(x+h, y+h, z, 1, mol_id))
                     atoms.append(Atom(x, y+h, z+h, 1, mol_id+1))
@@ -78,7 +78,7 @@ def add_ball(atoms, l, rho):
                     N += 1
                     L.append(index)
                     L.append(index+1)
-                if z == 0:  # Name the bottom atoms number 3
+                elif z == 0:  # Name the bottom atoms number 3
                     atoms.append(Atom(x, y, z, 3, mol_id))
                     atoms.append(Atom(x+h, y+h, z, 3, mol_id+1))
                     atoms.append(Atom(x, y+h, z+h, 1, mol_id+2))
@@ -104,7 +104,7 @@ def save_file(filename, atoms, N):
         f.write("1 bond types\n\n")
         f.write("0.00 51.00 xlo xhi\n")
         f.write("0.00 51.00 ylo yhi\n")
-        f.write("0.00 102.00 zlo zhi\n")
+        f.write("0.00 51.00 zlo zhi\n")
         f.write("\n")
         f.write("Atoms\n\n")  # atom ID, molcule ID, atom type, atomic coordinates
         for i, a in enumerate(atoms):

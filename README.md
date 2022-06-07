@@ -4,9 +4,9 @@
 
  In advance, prepare surfactant on the surface of bubble
 
-→  Relax the system in no gravity
+→  Relax the system in no gravity (make_bubble.input)
 
-→  Add gas phase and apply gravity
+→  Add gas phase and apply gravity (gravity.input)
 
 
 ## Prevention of parallel shift caused by gravity
