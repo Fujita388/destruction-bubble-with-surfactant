@@ -11,5 +11,7 @@
 
 source /home/issp/materiapps/intel/lammps/lammpsvars.sh
 
-python3 generate.py
-srun lammps < make_bubble.input
+#python3 generate.py
+#srun lammps < make_bubble.input
+#python3 gravity.py > gravity.atoms
+srun lammps < gravity.input

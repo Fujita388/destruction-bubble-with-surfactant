@@ -12,3 +12,8 @@
 ## Prevention of parallel shift caused by gravity
 
  Create a wall that does not move with the atoms named number 3
+
+
+## Concentration of surfactant
+ 
+ Calculate concentration of surfactant from the ratio of the number of atom 1 and 2

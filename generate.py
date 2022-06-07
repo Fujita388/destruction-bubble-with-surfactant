@@ -1,3 +1,9 @@
+###########################################################
+# atom 1: solution, atom 2: hydrophobic group, atom 3: wall
+# mol_id determines the bonding between atoms
+# prepare atom 2 on the suface of bubble
+###########################################################
+
 import random
 import numpy as np
 from math import cos, sin, sqrt
@@ -37,23 +43,7 @@ def get_lattice_number(L, rho):
         return m + 1
 
 
-# Choose atom 2 with a certain probability
-def choice():
-    l = [1, 2]
-    w = [10, 1]
-    p = random.choices(l, weights=w)[0]
-    return p
-
-
 # Compose liquid-phase atoms
-
-########## 
-# atom 1: solution, atom 2: hydrophobic group, atom 3: wall
-# mol_id determines the bonding between atoms
-# prepare atom 2 on the suface of bubble
-# See ~/lammps_test/one_phase/micelle/generate.py
-##########
-
 def add_ball(atoms, l, rho):
     m = int(get_lattice_number(l, rho))  # lattice number in liquid-phase
     s = 1.7  # Length of a unit lattice edge
@@ -94,17 +84,21 @@ def add_ball(atoms, l, rho):
     return N
 
 
-# save as make_bubble.atoms
-def save_file(filename, atoms, N):
+# Calculate concentration of surfactant
+#def concentration():
+
+
+# Save as make_bubble.atoms
+def save_file(filename, atoms, N, l):
     with open(filename, "w") as f:
         f.write("Position Data\n\n")
         f.write("{} atoms\n".format(len(atoms)))
         f.write("{} bonds\n\n".format(N))
         f.write("3 atom types\n")
         f.write("1 bond types\n\n")
-        f.write("0.00 51.00 xlo xhi\n")
-        f.write("0.00 51.00 ylo yhi\n")
-        f.write("0.00 51.00 zlo zhi\n")
+        f.write("0.00 {} xlo xhi\n".format(l))
+        f.write("0.00 {} ylo yhi\n".format(l))
+        f.write("0.00 {} zlo zhi\n".format(l))
         f.write("\n")
         f.write("Atoms\n\n")  # atom ID, molcule ID, atom type, atomic coordinates
         for i, a in enumerate(atoms):
@@ -128,4 +122,4 @@ L = []  # list of the atom ID that make up the bond
 
 N = add_ball(atoms, 51, 0.8)
 
-save_file("make_bubble.atoms", atoms, N)
+save_file("make_bubble.atoms", atoms, N, 51.0)
